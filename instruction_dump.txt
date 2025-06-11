@@ -1,0 +1,58 @@
+#Team Members:
+#Abhishek Musku
+#Sandeep Goud Abbagouni
+#Sai Teja Gali
+#Ramakrishna Gopavarapu
+
+Generating 18 instructions...
+Building 18 instructions...
+Inst 1: mov %cl,%bl (1-byte) - next ptr: 0x603012
+Inst 2: mov %dl,%dil (1-byte) - next ptr: 0x603014
+Inst 3: mov %ax,%si (2-byte) - next ptr: 0x603017
+Inst 4: mov %sp,%bp (2-byte) - next ptr: 0x60301a
+Inst 5: mov %esi,%edi (4-byte) - next ptr: 0x60301c
+Inst 6: mov %ebx,%eax (4-byte) - next ptr: 0x60301e
+Inst 7: mov $0x42,%al (1-byte) - next ptr: 0x603021
+Inst 8: mov $0xC1,%bl (1-byte) - next ptr: 0x603024
+Inst 9: mov $0x1234,%cx (2-byte) - next ptr: 0x603029
+Inst 10: mov $0x5678,%dx (2-byte) - next ptr: 0x60302e
+Inst 11: mov $0x12345678,%esi (4-byte) - next ptr: 0x603034
+Inst 12: mov $0xDEADBEEF,%edi (4-byte) - next ptr: 0x60303a
+ISZ_1 reg-to-mem:  stored at 0x60303a: 0x0188
+Inst 13: mov %al,(%ecx) (1-byte) - next ptr: 0x60303c
+ISZ_1 reg-to-mem:  stored at 0x60303c: 0x1a88
+Inst 14: mov %bl,(%edx) (1-byte) - next ptr: 0x60303e
+Inst 15: mov %si,(%edi) (2-byte) - next ptr: 0x603041
+Inst 16: mov %dx,(%ecx) (2-byte) - next ptr: 0x603044
+ISZ_4 reg-to-mem: stored at 0x603044: 0x0889
+Inst 17: mov %ecx,(%eax) (4-byte) - next ptr: 0x603046
+ISZ_4 reg-to-mem: stored at 0x603046: 0x1f89
+Inst 18: mov %ebx,(%edi) (4-byte) - next ptr: 0x603048
+Instruction generation complete!
+generation program complete, instructions generated: 18
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe2b8) at encodeit.c:27
+27	}
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+(gdb) x/18ai mptr        
+   0x603010:	mov    %cl,%bl
+   0x603012:	mov    %dl,%bh
+   0x603014:	mov    %ax,%si
+   0x603017:	mov    %sp,%bp
+   0x60301a:	mov    %esi,%edi
+   0x60301c:	mov    %ebx,%eax
+   0x60301e:	mov    $0x42,%al
+   0x603021:	mov    $0xc1,%bl
+   0x603024:	mov    $0x1234,%cx
+   0x603029:	mov    $0x5678,%dx
+   0x60302e:	mov    $0x12345678,%esi
+   0x603034:	mov    $0xdecade01,%edi
+   0x60303a:	mov    %al,(%rcx)
+   0x60303c:	mov    %bl,(%rdx)
+   0x60303e:	mov    %si,(%rdi)
+   0x603041:	mov    %dx,(%rcx)
+   0x603044:	mov    %ecx,(%rax)
+   0x603046:	mov    %ebx,(%rdi)
+(gdb) 
+
+
