@@ -1,5 +1,5 @@
 #
-# wimpy make examples to build lab1
+# wimpy make example to build lab
 #
 IDIR =./include
 CC=gcc

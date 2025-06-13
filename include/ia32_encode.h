@@ -71,19 +71,16 @@
 
 // REX prefix definitions
 #define REX_BASE		   0x40
-#define REX_W_BIT          0x08    // REX.W - 64-bit operand size
-#define REX_R_BIT          0x04    // REX.R - Extension of ModR/M reg field
-#define REX_X_BIT          0x02    // REX.X - Extension of SIB index field  
-#define REX_B_BIT          0x01    // REX.B - Extension of ModR/M r/m field
+#define REX_W          0x08    // REX.W - 64-bit operand size
+#define REX_R          0x04    // REX.R - Extension of ModR/M reg field
+#define REX_X          0x02    // REX.X - Extension of SIB index field  
+#define REX_B          0x01    // REX.B - Extension of ModR/M r/m field
 
 
 // code generation defines
 
 #define MAX_INSTR_BYTES 10000
 #define MAX_DATA_BYTE  (10*1024)  // allocate 10K
-
-
-#define LOCK_PREFIX    0xF0
 /*
  * Function: build_mov_register_to_register
  *
@@ -110,15 +107,15 @@ static inline volatile char *build_mov_register_to_register(short mov_size, int 
     
     // Check if we need REX prefix
     if (mov_size == 8) {
-        rex_prefix |= REX_W_BIT;  // 64-bit operand size
+        rex_prefix |= REX_W;  // 64-bit operand size
         need_rex = 1;
     }
     if (dest_reg >= 8) {
-        rex_prefix |= REX_R_BIT;  // Extended destination register
+        rex_prefix |= REX_R;  // Extended destination register
         need_rex = 1;
     }
     if (src_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended source register  
+        rex_prefix |= REX_B;  // Extended source register  
         need_rex = 1;
     }
     
@@ -183,18 +180,18 @@ static inline volatile char *build_mov_register_to_register(short mov_size, int 
  *  returns adjusted address after encoding instruction
  *
  */
-static inline volatile char *build_imm_to_register(short mov_size, int immediate_val, int dest_reg, volatile char *tgt_addr)
+static inline volatile char *build_imm_to_register(short mov_size, long immediate_val, int dest_reg, volatile char *tgt_addr)
 {
     unsigned char rex_prefix = 0;
     int need_rex = 0;
     
     // Check if we need REX prefix
     if (mov_size == 8) {
-        rex_prefix |= REX_W_BIT;  // 64-bit operand size
+        rex_prefix |= REX_W;  // 64-bit operand size
         need_rex = 1;
     }
     if (dest_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended destination register
+        rex_prefix |= REX_B;  // Extended destination register
         need_rex = 1;
     }
     
@@ -227,8 +224,6 @@ static inline volatile char *build_imm_to_register(short mov_size, int immediate
         break;
     case 2:  // can overload this case because same opcode, but already set prefix
     case 4: 
-    case 8:  // 64-bit: REX.W + C7 /0 - MOV r64, imm32 (sign-extended to 64-bit)
-        // C7 /0 - MOV r/m16/32/64, imm16/32
         (*(short *) tgt_addr) = ((BASE_MODRM) + (0 << REG_SHIFT) + dest_reg_bits) << 8 | 0xC7;
         tgt_addr += BYTE2_OFF;
         
@@ -237,10 +232,16 @@ static inline volatile char *build_imm_to_register(short mov_size, int immediate
             tgt_addr += BYTE2_OFF;
         } else { // mov_size == 4 or mov_size == 8
             // For 64-bit, immediate is 32-bit and gets sign-extended
-            *(int *)tgt_addr = immediate_val;
+            *(int *)tgt_addr = (int)(immediate_val & 0xFFFFFFFF);
             tgt_addr += BYTE4_OFF;
         }
         break;
+	case 8:  // this requires rex.w to be set prior to this..
+		 (*(char *) tgt_addr) = (0xb8 + dest_reg_bits);      
+		 tgt_addr += BYTE1_OFF;
+		 (*(long *)tgt_addr) = immediate_val;
+		 tgt_addr +=8;
+		 break;
     default:
         fprintf(stderr,"ERROR: Incorrect size (%d) passed to immediate to register move\n", mov_size);
         return (NULL);
@@ -288,15 +289,15 @@ static inline volatile char *build_reg_to_memory(short mov_size, int src_reg, in
     
     // Check if we need REX prefix
     if (mov_size == 8) {
-        rex_prefix |= REX_W_BIT;  // 64-bit operand size
+        rex_prefix |= REX_W;  // 64-bit operand size
         need_rex = 1;
     }
     if (src_reg >= 8) {
-        rex_prefix |= REX_R_BIT;  // Extended source register
+        rex_prefix |= REX_R;  // Extended source register
         need_rex = 1;
     }
     if (mem_base_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended base register
+        rex_prefix |= REX_B;  // Extended base register
         need_rex = 1;
     }
     
@@ -397,15 +398,15 @@ static inline volatile char *build_mov_memory_to_register(short mov_size, int me
     
     // Check if we need REX prefix
     if (mov_size == 8) {
-        rex_prefix |= REX_W_BIT;  // 64-bit operand size
+        rex_prefix |= REX_W;  // 64-bit operand size
         need_rex = 1;
     }
     if (dest_reg >= 8) {
-        rex_prefix |= REX_R_BIT;  // Extended destination register
+        rex_prefix |= REX_R;  // Extended destination register
         need_rex = 1;
     }
     if (mem_base_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended base register
+        rex_prefix |= REX_B;  // Extended base register
         need_rex = 1;
     }
     
@@ -524,11 +525,11 @@ static inline volatile char *build_xadd(short xadd_size, int rm_reg, int reg, lo
     
     // Check if we need REX prefix
     if (reg >= 8) {
-        rex_prefix |= REX_R_BIT;  // Extended register operand
+        rex_prefix |= REX_R;  // Extended register operand
         need_rex = 1;
     }
     if (rm_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended r/m operand
+        rex_prefix |= REX_B;  // Extended r/m operand
         need_rex = 1;
     }
     
@@ -653,11 +654,11 @@ static inline volatile char *build_xchg(short xchg_size, int rm_reg, int reg, lo
     
     // Check if we need REX prefix
     if (reg >= 8) {
-        rex_prefix |= REX_R_BIT;  // Extended register operand
+        rex_prefix |= REX_R;  // Extended register operand
         need_rex = 1;
     }
     if (rm_reg >= 8) {
-        rex_prefix |= REX_B_BIT;  // Extended r/m operand
+        rex_prefix |= REX_B;  // Extended r/m operand
         need_rex = 1;
     }
     
@@ -820,3 +821,56 @@ static inline volatile char *build_lfence(volatile char *tgt_addr)
  *  returns adjusted address after encoding instruction
  *
  */
+
+
+static inline volatile char *build_push_reg(int reg_index, int x86_64f, volatile char *tgt_addr)
+{
+
+	if (x86_64f) {
+		// this is a quick hack for REX_B prefix
+
+		(*(char *) tgt_addr)=(REX_BASE | REX_B);
+		tgt_addr += BYTE1_OFF;
+	}
+
+	(*(char *) tgt_addr) = 0x50 + (reg_index & 0x7);
+	tgt_addr += BYTE1_OFF;
+			
+        return(tgt_addr);
+}
+
+/*
+ * Function: build_pop_reg
+ *
+ * Description:
+ *
+ * builds pop register
+ *
+ * Inputs: 
+ *
+ *  int reg_index                :  index of register
+ *  int x86_64f                  :  flag to indicate if we need to exted to rex format
+ *  volatile char *tgt_addr      :  starting memory address of where to store instruction
+ *
+ * Output: 
+ *
+ *  returns adjusted address after encoding instruction
+ *
+ */
+
+
+static inline volatile char *build_pop_reg(int reg_index, int x86_64f, volatile char *tgt_addr)
+{
+
+	if (x86_64f) {
+		// this is a quick hack for REX_B prefix
+
+		(*(char *) tgt_addr)=(REX_BASE | REX_B);
+		tgt_addr += BYTE1_OFF;
+	}
+
+	(*(char *) tgt_addr) = 0x58 + (reg_index & 0x7);
+	tgt_addr += BYTE1_OFF;
+			
+        return(tgt_addr);
+}
