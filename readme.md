@@ -66,9 +66,3 @@ The generated test programs validate processor functionality through:
 - **Memory consistency**: Tests load/store ordering with barriers
 - **Multi-core coherence**: Validates cache coherency protocols
 - **ABI compliance**: Preserves callee-saved registers and stack frames
-
-## Academic Context and Industry Relevance
-
-This project operates within the established field of **post-silicon validation**, which differs fundamentally from pre-silicon verification. While pre-silicon testing uses simulators running at MHz speeds with perfect observability, post-silicon validation tests actual manufactured silicon at GHz speeds with limited observability. The project's approach of generating random instruction sequences addresses the **coverage problem** that directed testing cannot solve—systematically exploring the vast space of possible processor states to find corner cases.
-
-The project's **seed-based reproducibility** feature addresses a critical challenge in processor validation—the need to reproduce bugs found during random testing. This capability transforms random testing from a discovery tool into a systematic debugging methodology.
