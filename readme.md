@@ -28,7 +28,7 @@ The implementation of multi-threaded and multi-process execution using `fork()` 
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/AbhishekMusku/processor-testrig.git
 cd processor-testrig
 
 # Build the executable
