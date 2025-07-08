@@ -1,48 +1,116 @@
-# Base code for project2 part1
+# Base code for project part3 plus instructions
 #
-# Requirements for project part1
 #
-
+# Summary
+#
+# Adding multiple procs into your test environment
+#
+#
+# In this part you will be adding more instructions as well as fork processes
+# to allowing running multiple generators in parallel
+#
+# This part is an extension to part 2
+#
+# At the end of this lab you should be able to generate, single step through 
+# and execute your code from start to finish but with multiple processes that can be run on multiple threads/cores..
+#
+# As before (should have argument to pass in seed # and # of instructions)
+#
+# Should also be able to run just by letting it run from the command line...
+# Get generate and execute 25 instructions (mixture of reg to reg , imm to reg,
+# reg to memory, and memory to reg), then return to the executeit routine..
+# Set a base address in one or more registers and use that register(s) as a pointer
+# to memory on a per process basis.
 #
 # 
-
-# Next project will be implementing some of the skills you have learned..
-# Create simple program to generate mov instructions in memory using provided 
-# template.
-# 
+# use gdb to run and debug problems..
+#
+#
+#
 # Requirements
 #
-# Provide first knob (parameter) to allow number of instructions to generate
+# Merge in your code from part2
 #
-# Add build mov immediate to register as inline function to ia32_encode.h.  
-# Name: build_imm_to_register
+# add the following new instruction build routines
 #
-# Add build mov reg to memory as inline function to ia32_encode.h.  
-# Name: build_reg_to_memory
+#     build_xadd (of the following forms) r/m{8,16,32}, {r8, r16, r32}  (Intel syntax)
+#     		 for the above, randomize with/without a lock prefix
+#     build_xchg (of the following forms) r/m{8,16,32}, {r8, r16, r32}  (Intel syntax)
+#     		 for the above, randomize with/without a lock prefix
 #
-# Be able to dump instructions out from gdb by using allocated buffer 
-# (use base address pointer)
-# can x/ai mptr from encode.c:27 (for example)
-
-# Encode at least 9 instructions of the 3 types
-# Mov reg to reg, mov_imm_to_reg, mov_reg_to_mem
+#     build_mfence (add instruction for mfence)
+#     build_sfence (add instruction for sfence)
+#     build_lfence (add instruction for lfence)
+#
+#     
+# Add New parameters
 # 
-# Dump out the instructions you have encoded via gdb and submit along with code.
+# nthreads:    Add a parameter to your code to pass in the number of threads to generate and execute.
+# 
+# logfilename: Add a parameter to dump out a log file on instruction type, reg, memory, displacement, 
+# 
+# 
+# Changes to the Base code
+#
+# The current code creates a separate data area for each processes, but for MP validation, we will want to share
+# the data area between processes.  
+# 
+#
+# Add code to bind the process to particular CPU
+# 
+# best to have a subroutine to do this, i.e. bind_to_cpu(<can pass in thread logical id>)
+#
+# Can use the following function call, do a man/search on sched_setaffinity
+# 
+#
+# NAME
+#       sched_setaffinity, sched_getaffinity - set and get a process's CPU affinity mask
+#
+#
+# #include <sched.h>
+#
+# // to set use, note parameters
+#
+# int sched_setaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
+#
+# // to get current affinity if needed
+#
+# int sched_getaffinity(pid_t pid, size_t cpusetsize,
+#  cpu_set_t *mask);
+#
+#
+#
+# Extra Credit
+# =========================
+# in add_headeri function
+#    
+# add synchronization barrier code to synchronize the threads prior to random code based on # of generator threads
+#
+# in add_endi function
+#
+# add barrier code to synchronize the threads and the end of the random code (can be used for checking, etc)
+#
+#
+# HINTS: use a shared com ptr area for this.
+#
 
-
-# Use template to get you started:
-# Makefile
-# Header file include/ia32_encode.h
-# Simple base test file: encodeit.c
-
+#
 # Building the code...
-# In order to build the code
+# In order to build the code, same as before
+#
 
 make
 
 # can run it, or debug it..
 
 gdb encodeit
+
+# hint for easier debug of instructions stepping in gdb
+# display instructions related instructions related to current instruction pointer...
+#
+display/i $pc
+
+# can type stepi
 
 # if you want to clean out the obj, exec
 
@@ -58,7 +126,7 @@ make clean
 gdb encodeit
 
 # can set a break point at main or line 27..
-# after the genration stage (build_instruction has run)
+# after the generation stage (build_instruction has run)
 # then the buffer should be populated and you can dump it out.
 
 Breakpoint 3, main (argc=1, argv=0x7fff5fbff920) at encodeit.c:27
@@ -67,3 +135,13 @@ Breakpoint 3, main (argc=1, argv=0x7fff5fbff920) at encodeit.c:27
 0x100800000:	mov    %ecx,%ebx
 0x100800002:	mov    %edx,%edi
 ...
+
+#
+# can now also set a break point at executeit... This is important.
+# can use the gdb display command and step into your generated code...
+#
+# should be able to walk through and execute your code from start to finish..
+# both from the debugger and from just letting it run from the command line...
+# 
+#
+

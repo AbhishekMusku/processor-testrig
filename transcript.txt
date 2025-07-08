@@ -1,0 +1,613 @@
+bash-4.2$ make
+make: `encodeit' is up to date.
+bash-4.2$ gdb encodeit
+GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-120.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/abhimusk/common/Desktop/ALL_POST/FINAL/part3_COPY1/encodeit...done.
+(gdb) set detach-on-fork off
+(gdb) set follow-fork-mode parent
+(gdb) run 12345 25 4 logfile.txt
+Starting program: /home/abhimusk/common/Desktop/ALL_POST/FINAL/part3_COPY1/encodeit 12345 25 4 logfile.txt
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64//libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+Logging to: logfile.txt
+
+starting seed = 12345
+Number of instructions = 25
+Number of threads = 4
+[New inferior 2 (process 19742)]
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64//libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+[New inferior 3 (process 19744)]
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64//libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+[New inferior 4 (process 19745)]
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64//libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+[New inferior 5 (process 19746)]
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib64//libc-2.17.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+^C
+Program received signal SIGINT, Interrupt.
+0x00007ffff77d060c in waitpid () from /lib64/libc.so.6
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-326.el7_9.3.x86_64
+(gdb) inferior 2
+[Switching to inferior 2 [process 19742] (/home/abhimusk/common/Desktop/ALL_POST/FINAL/part3_COPY1/encodeit)]
+[Switching to thread 2 (process 19742)] 
+#0  0x00007ffff77d0b12 in fork () from /lib64/libc.so.6
+(gdb) break build_instructions
+Breakpoint 1 at 0x4025a2: build_instructions. (5 locations)
+(gdb) break executeit
+Breakpoint 2 at 0x4021e8: executeit. (5 locations)
+(gdb) continue
+Continuing.
+
+Breakpoint 1, build_instructions (next_ptr=0x7ffff7fe8000 "", thread_id=0, logfile=0x606010) at encodeit.c:398
+398		int instructions_built = 0;
+(gdb) continue
+Continuing.
+T0: building instructions
+T0: MOVING MDPTR: MOV #7FFFF7FAC000->R6 (size=8)
+T0: Setup: loaded mdptr into RSI
+T0: Generating: XCHG R7,R2 (size=1)
+ISZ_1 reg-to-reg XCHG: R7 <-> R2
+T0: Instruction 2 complete, next_ptr: 0x7ffff7fe8019
+T0: Generating: XCHG [RSI+53],R0 (size=4)
+ISZ_4 mem-to-reg XCHG: [R6+53] <-> R0
+  + 8-bit displacement: 0x35
+T0: Instruction 3 complete, next_ptr: 0x7ffff7fe801c
+T0: Generating: MOV [RSI+35]->R10 (size=4)
+ISZ_4 mem-to-reg: stored at 0x7ffff7fe801d: 0x568b, disp=35
+  + 8-bit displacement: 0x23
+T0: Instruction 4 complete, next_ptr: 0x7ffff7fe8020
+T0: Generating: LOCK XADD [RSI+0],R7 (size=4)
+LOCK ISZ_4 mem-to-reg XADD: [R6+0] += R7 (and exchange)
+T0: Instruction 5 complete, next_ptr: 0x7ffff7fe8024
+T0: Generating: XCHG R2,R9 (size=4)
+ISZ_4 reg-to-reg XCHG: R2 <-> R9
+T0: Instruction 6 complete, next_ptr: 0x7ffff7fe8027
+T0: Generating: SFENCE (store memory barrier)
+Generated SFENCE (store memory barrier)
+T0: Instruction 7 complete, next_ptr: 0x7ffff7fe802a
+T0: Generating: MOV R10->[RSI+11] (size=8)
+ISZ_8 reg-to-mem: stored at 0x7ffff7fe802b: 0x5689, disp=11
+  + 8-bit displacement: 0x0b
+T0: Instruction 8 complete, next_ptr: 0x7ffff7fe802e
+T0: Generating: MFENCE (full memory barrier)
+Generated MFENCE (full memory barrier)
+T0: Instruction 9 complete, next_ptr: 0x7ffff7fe8031
+T0: Generating: LFENCE (load memory barrier)
+Generated LFENCE (load memory barrier)
+T0: Instruction 10 complete, next_ptr: 0x7ffff7fe8034
+T0: Generating: LOCK XADD [RSI+71],R2 (size=4)
+LOCK ISZ_4 mem-to-reg XADD: [R6+71] += R2 (and exchange)
+  + 8-bit displacement: 0x47
+T0: Instruction 11 complete, next_ptr: 0x7ffff7fe8039
+T0: Generating: SFENCE (store memory barrier)
+Generated SFENCE (store memory barrier)
+T0: Instruction 12 complete, next_ptr: 0x7ffff7fe803c
+T0: Generating: MOV [RSI+0]->R2 (size=2)
+ISZ_2 mem-to-reg: stored at 0x7ffff7fe803d: 0x168b, disp=0
+T0: Instruction 13 complete, next_ptr: 0x7ffff7fe803f
+T0: Generating: LOCK XCHG [RSI+0],R14 (size=1)
+LOCK ISZ_1 mem-to-reg XCHG: [R6+0] <-> R14
+T0: Instruction 14 complete, next_ptr: 0x7ffff7fe8043
+T0: Generating: LFENCE (load memory barrier)
+Generated LFENCE (load memory barrier)
+T0: Instruction 15 complete, next_ptr: 0x7ffff7fe8046
+T0: Generating: MOV R15->[RSI+52] (size=1)
+ISZ_1 reg-to-mem: stored at 0x7ffff7fe8047: 0x7e88, disp=52
+  + 8-bit displacement: 0x34
+T0: Instruction 16 complete, next_ptr: 0x7ffff7fe804a
+T0: Generating: MOV [RSI+0]->R9 (size=1)
+ISZ_1 mem-to-reg: stored at 0x7ffff7fe804b: 0x0e8a, disp=0
+T0: Instruction 17 complete, next_ptr: 0x7ffff7fe804d
+T0: Generating: LOCK XADD [RSI+0],R10 (size=4)
+LOCK ISZ_4 mem-to-reg XADD: [R6+0] += R10 (and exchange)
+T0: Instruction 18 complete, next_ptr: 0x7ffff7fe8052
+T0: Generating: XADD R9,R14 (size=4)
+ISZ_4 reg-to-reg XADD: R9 += R14 (and exchange)
+T0: Instruction 19 complete, next_ptr: 0x7ffff7fe8056
+T0: Generating: MOV R0->R11 (size=4)
+T0: Instruction 20 complete, next_ptr: 0x7ffff7fe8059
+T0: Generating: LOCK XCHG [RSI+316],R2 (size=1)
+LOCK ISZ_1 mem-to-reg XCHG: [R6+316] <-> R2
+  + 32-bit displacement: 0x0000013c
+T0: Instruction 21 complete, next_ptr: 0x7ffff7fe8060
+T0: Generating: XCHG R9,R10 (size=4)
+ISZ_4 reg-to-reg XCHG: R9 <-> R10
+T0: Instruction 22 complete, next_ptr: 0x7ffff7fe8063
+T0: Generating: MFENCE (full memory barrier)
+Generated MFENCE (full memory barrier)
+T0: Instruction 23 complete, next_ptr: 0x7ffff7fe8066
+T0: Generating: MOV R1->R15 (size=8)
+T0: Instruction 24 complete, next_ptr: 0x7ffff7fe8069
+T0: Generating: XCHG [RSI+1098],R9 (size=1)
+ISZ_1 mem-to-reg XCHG: [R6+1098] <-> R9
+  + 32-bit displacement: 0x0000044a
+T0: Instruction 25 complete, next_ptr: 0x7ffff7fe8070
+T0: Generating: MOV [RSI+16]->R3 (size=4)
+ISZ_4 mem-to-reg: stored at 0x7ffff7fe8070: 0x5e8b, disp=16
+  + 8-bit displacement: 0x10
+T0: Instruction 26 complete, next_ptr: 0x7ffff7fe8073
+T0: next ptr is now 0x7ffff7fe8073
+T0: Generated 26 total instructions
+
+Breakpoint 2, executeit (start_addr=0x7ffff7fe8000) at encodeit.c:258
+258		volatile int i,rc=0;
+(gdb) x/40i mptr_threads[0]
+   0x7ffff7fe8000:	enterq $0x800,$0x0
+   0x7ffff7fe8004:	push   %rbx
+   0x7ffff7fe8005:	push   %r12
+   0x7ffff7fe8007:	push   %r13
+   0x7ffff7fe8009:	push   %r14
+   0x7ffff7fe800b:	push   %r15
+   0x7ffff7fe800d:	movabs $0x7ffff7fac000,%rsi
+   0x7ffff7fe8017:	xchg   %dl,%bh
+   0x7ffff7fe8019:	xchg   %eax,0x35(%rsi)
+   0x7ffff7fe801c:	mov    0x23(%rsi),%r10d
+   0x7ffff7fe8020:	lock xadd %edi,(%rsi)
+   0x7ffff7fe8024:	xchg   %r9d,%edx
+   0x7ffff7fe8027:	sfence 
+   0x7ffff7fe802a:	mov    %r10,0xb(%rsi)
+   0x7ffff7fe802e:	mfence 
+   0x7ffff7fe8031:	lfence 
+   0x7ffff7fe8034:	lock xadd %edx,0x47(%rsi)
+   0x7ffff7fe8039:	sfence 
+   0x7ffff7fe803c:	mov    (%rsi),%dx
+   0x7ffff7fe803f:	lock xchg %r14b,(%rsi)
+   0x7ffff7fe8043:	lfence 
+   0x7ffff7fe8046:	mov    %r15b,0x34(%rsi)
+   0x7ffff7fe804a:	mov    (%rsi),%r9b
+   0x7ffff7fe804d:	lock xadd %r10d,(%rsi)
+   0x7ffff7fe8052:	xadd   %r14d,%r9d
+   0x7ffff7fe8056:	mov    %eax,%r11d
+   0x7ffff7fe8059:	lock xchg %dl,0x13c(%rsi)
+   0x7ffff7fe8060:	xchg   %r10d,%r9d
+   0x7ffff7fe8063:	mfence 
+   0x7ffff7fe8066:	mov    %rcx,%r15
+   0x7ffff7fe8069:	xchg   %r9b,0x44a(%rsi)
+   0x7ffff7fe8070:	mov    0x10(%rsi),%ebx
+   0x7ffff7fe8073:	pop    %r15
+   0x7ffff7fe8075:	pop    %r14
+   0x7ffff7fe8077:	pop    %r13
+   0x7ffff7fe8079:	pop    %r12
+   0x7ffff7fe807b:	pop    %rbx
+   0x7ffff7fe807c:	leaveq 
+   0x7ffff7fe807d:	retq   
+   0x7ffff7fe807e:	add    %al,(%rax)
+(gdb) display/i $pc
+1: x/i $pc
+=> 0x4021e8 <executeit+12>:	movl   $0x0,-0x8(%rbp)
+(gdb) stepi
+260		i=0;
+1: x/i $pc
+=> 0x4021ef <executeit+19>:	movl   $0x0,-0x4(%rbp)
+(gdb) 
+262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021f6 <executeit+26>:	mov    -0x18(%rbp),%rdx
+(gdb) stepi
+0x00000000004021fa	262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021fa <executeit+30>:	mov    $0x0,%eax
+(gdb) stepi
+0x00000000004021ff	262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021ff <executeit+35>:	callq  *%rdx
+(gdb) stepi
+0x00007ffff7fe8000 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8000:	enterq $0x800,$0x0
+(gdb) stepi
+0x00007ffff7fe8004 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8004:	push   %rbx
+(gdb) stepi
+0x00007ffff7fe8005 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8005:	push   %r12
+(gdb) stepi
+0x00007ffff7fe8007 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8007:	push   %r13
+(gdb) stepi
+0x00007ffff7fe8009 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8009:	push   %r14
+(gdb) stepi
+0x00007ffff7fe800b in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe800b:	push   %r15
+(gdb) stepi
+0x00007ffff7fe800d in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe800d:	movabs $0x7ffff7fac000,%rsi
+(gdb) stepi
+0x00007ffff7fe8017 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8017:	xchg   %dl,%bh
+(gdb) stepi
+0x00007ffff7fe8019 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8019:	xchg   %eax,0x35(%rsi)
+(gdb) stepi
+0x00007ffff7fe801c in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe801c:	mov    0x23(%rsi),%r10d
+(gdb) stepi
+0x00007ffff7fe8020 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8020:	lock xadd %edi,(%rsi)
+(gdb) stepi
+0x00007ffff7fe8024 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8024:	xchg   %r9d,%edx
+(gdb) stepi
+0x00007ffff7fe8027 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8027:	sfence 
+(gdb) stepi
+0x00007ffff7fe802a in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe802a:	mov    %r10,0xb(%rsi)
+(gdb) stepi
+0x00007ffff7fe802e in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe802e:	mfence 
+(gdb) stepi
+0x00007ffff7fe8031 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8031:	lfence 
+(gdb) stepi
+0x00007ffff7fe8034 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8034:	lock xadd %edx,0x47(%rsi)
+(gdb) stepi
+0x00007ffff7fe8039 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8039:	sfence 
+(gdb) stepi
+0x00007ffff7fe803c in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe803c:	mov    (%rsi),%dx
+(gdb) stepi
+0x00007ffff7fe803f in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe803f:	lock xchg %r14b,(%rsi)
+(gdb) stepi
+0x00007ffff7fe8043 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8043:	lfence 
+(gdb) stepi
+0x00007ffff7fe8046 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8046:	mov    %r15b,0x34(%rsi)
+(gdb) stepi
+0x00007ffff7fe804a in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe804a:	mov    (%rsi),%r9b
+(gdb) stepi
+0x00007ffff7fe804d in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe804d:	lock xadd %r10d,(%rsi)
+(gdb) stepi
+0x00007ffff7fe8052 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8052:	xadd   %r14d,%r9d
+(gdb) stepi
+0x00007ffff7fe8056 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8056:	mov    %eax,%r11d
+(gdb) stepi
+0x00007ffff7fe8059 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8059:	lock xchg %dl,0x13c(%rsi)
+(gdb) stepi
+0x00007ffff7fe8060 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8060:	xchg   %r10d,%r9d
+(gdb) stepi
+0x00007ffff7fe8063 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8063:	mfence 
+(gdb) stepi
+0x00007ffff7fe8066 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8066:	mov    %rcx,%r15
+(gdb) stepi
+0x00007ffff7fe8069 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8069:	xchg   %r9b,0x44a(%rsi)
+(gdb) stepi
+0x00007ffff7fe8070 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8070:	mov    0x10(%rsi),%ebx
+(gdb) stepi
+0x00007ffff7fe8073 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8073:	pop    %r15
+(gdb) stepi
+0x00007ffff7fe8075 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8075:	pop    %r14
+(gdb) stepi
+0x00007ffff7fe8077 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8077:	pop    %r13
+(gdb) stepi
+0x00007ffff7fe8079 in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe8079:	pop    %r12
+(gdb) stepi
+0x00007ffff7fe807b in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe807b:	pop    %rbx
+(gdb) stepi
+0x00007ffff7fe807c in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe807c:	leaveq 
+(gdb) stepi
+0x00007ffff7fe807d in ?? ()
+1: x/i $pc
+=> 0x7ffff7fe807d:	retq   
+(gdb) stepi
+0x0000000000402201 in executeit (start_addr=0x7ffff7fe8000) at encodeit.c:262
+262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x402201 <executeit+37>:	mov    %eax,-0x8(%rbp)
+(gdb) inferior 3
+[Switching to inferior 3 [process 19744] (/home/abhimusk/common/Desktop/ALL_POST/FINAL/part3_COPY1/encodeit)]
+[Switching to thread 3 (process 19744)] 
+#0  0x00007ffff77d0b12 in fork () from /lib64/libc.so.6
+(gdb) break build_instructions
+Note: breakpoint 1 also set at pc 0x4025a2.
+Note: breakpoint 1 also set at pc 0x4025a2.
+Note: breakpoint 1 also set at pc 0x4025a2.
+Note: breakpoint 1 also set at pc 0x4025a2.
+Note: breakpoint 1 also set at pc 0x4025a2.
+Breakpoint 3 at 0x4025a2: build_instructions. (5 locations)
+(gdb) break executeit
+Note: breakpoint 2 also set at pc 0x4021e8.
+Note: breakpoint 2 also set at pc 0x4021e8.
+Note: breakpoint 2 also set at pc 0x4021e8.
+Note: breakpoint 2 also set at pc 0x4021e8.
+Note: breakpoint 2 also set at pc 0x4021e8.
+Breakpoint 4 at 0x4021e8: executeit. (5 locations)
+(gdb) con  
+condition  continue   
+(gdb) continue
+Continuing.
+
+Breakpoint 1, build_instructions (next_ptr=0x7ffff7feb000 "", thread_id=1, logfile=0x606010) at encodeit.c:398
+398		int instructions_built = 0;
+1: x/i $pc
+=> 0x4025a2 <build_instructions+31>:	movl   $0x0,-0x4(%rbp)
+(gdb) continue
+Continuing.
+T1: building instructions
+T1: MOVING MDPTR: MOV #7FFFF7FAC000->R6 (size=8)
+T1: Setup: loaded mdptr into RSI
+T1: Generating: XCHG R1,R10 (size=1)
+ISZ_1 reg-to-reg XCHG: R1 <-> R10
+T1: Instruction 2 complete, next_ptr: 0x7ffff7feb01a
+T1: Generating: MFENCE (full memory barrier)
+Generated MFENCE (full memory barrier)
+T1: Instruction 3 complete, next_ptr: 0x7ffff7feb01d
+T1: Generating: XCHG R2,R1 (size=2)
+ISZ_2 reg-to-reg XCHG: R2 <-> R1
+T1: Instruction 4 complete, next_ptr: 0x7ffff7feb020
+T1: Generating: XCHG R0,R3 (size=4)
+ISZ_4 reg-to-reg XCHG: R0 <-> R3
+T1: Instruction 5 complete, next_ptr: 0x7ffff7feb022
+T1: Generating: MOV R10->R3 (size=1)
+T1: Instruction 6 complete, next_ptr: 0x7ffff7feb025
+T1: Generating: XADD R1,R3 (size=4)
+ISZ_4 reg-to-reg XADD: R1 += R3 (and exchange)
+T1: Instruction 7 complete, next_ptr: 0x7ffff7feb028
+T1: Generating: MOV [RSI+911]->R3 (size=1)
+ISZ_1 mem-to-reg: stored at 0x7ffff7feb029: 0xffff9e8a, disp=911
+  + 32-bit displacement: 0x0000038f
+T1: Instruction 8 complete, next_ptr: 0x7ffff7feb02f
+T1: Generating: MOV [RSI+89]->R14 (size=4)
+ISZ_4 mem-to-reg: stored at 0x7ffff7feb030: 0x768b, disp=89
+  + 8-bit displacement: 0x59
+T1: Instruction 9 complete, next_ptr: 0x7ffff7feb033
+T1: Generating: MFENCE (full memory barrier)
+Generated MFENCE (full memory barrier)
+T1: Instruction 10 complete, next_ptr: 0x7ffff7feb036
+T1: Generating: MOV R9->[RSI+39] (size=8)
+ISZ_8 reg-to-mem: stored at 0x7ffff7feb037: 0x4e89, disp=39
+  + 8-bit displacement: 0x27
+T1: Instruction 11 complete, next_ptr: 0x7ffff7feb03a
+T1: Generating: MOV R7->R1 (size=1)
+T1: Instruction 12 complete, next_ptr: 0x7ffff7feb03d
+T1: Generating: SFENCE (store memory barrier)
+Generated SFENCE (store memory barrier)
+T1: Instruction 13 complete, next_ptr: 0x7ffff7feb040
+T1: Generating: XADD [RSI+0],R3 (size=4)
+ISZ_4 mem-to-reg XADD: [R6+0] += R3 (and exchange)
+T1: Instruction 14 complete, next_ptr: 0x7ffff7feb043
+T1: Generating: MOV [RSI+1422]->R9 (size=1)
+ISZ_1 mem-to-reg: stored at 0x7ffff7feb044: 0xffff8e8a, disp=1422
+  + 32-bit displacement: 0x0000058e
+T1: Instruction 15 complete, next_ptr: 0x7ffff7feb04a
+T1: Generating: XADD R2,R11 (size=1)
+ISZ_1 reg-to-reg XADD: R2 += R11 (and exchange)
+T1: Instruction 16 complete, next_ptr: 0x7ffff7feb04e
+T1: Generating: XCHG R9,R1 (size=4)
+ISZ_4 reg-to-reg XCHG: R9 <-> R1
+T1: Instruction 17 complete, next_ptr: 0x7ffff7feb051
+T1: Generating: XCHG R10,R2 (size=4)
+ISZ_4 reg-to-reg XCHG: R10 <-> R2
+T1: Instruction 18 complete, next_ptr: 0x7ffff7feb054
+T1: Generating: MOV [RSI+69]->R9 (size=1)
+ISZ_1 mem-to-reg: stored at 0x7ffff7feb055: 0x4e8a, disp=69
+  + 8-bit displacement: 0x45
+T1: Instruction 19 complete, next_ptr: 0x7ffff7feb058
+T1: Generating: MOV R7->R2 (size=2)
+T1: Instruction 20 complete, next_ptr: 0x7ffff7feb05b
+T1: Generating: XADD R9,R10 (size=4)
+ISZ_4 reg-to-reg XADD: R9 += R10 (and exchange)
+T1: Instruction 21 complete, next_ptr: 0x7ffff7feb05f
+T1: Generating: MOV R10->R15 (size=8)
+T1: Instruction 22 complete, next_ptr: 0x7ffff7feb062
+T1: Generating: MFENCE (full memory barrier)
+Generated MFENCE (full memory barrier)
+T1: Instruction 23 complete, next_ptr: 0x7ffff7feb065
+T1: Generating: XCHG R3,R15 (size=1)
+ISZ_1 reg-to-reg XCHG: R3 <-> R15
+T1: Instruction 24 complete, next_ptr: 0x7ffff7feb068
+T1: Generating: LFENCE (load memory barrier)
+Generated LFENCE (load memory barrier)
+T1: Instruction 25 complete, next_ptr: 0x7ffff7feb06b
+T1: Generating: XADD [RSI+28],R10 (size=4)
+ISZ_4 mem-to-reg XADD: [R6+28] += R10 (and exchange)
+  + 8-bit displacement: 0x1c
+T1: Instruction 26 complete, next_ptr: 0x7ffff7feb070
+T1: next ptr is now 0x7ffff7feb070
+T1: Generated 26 total instructions
+
+Breakpoint 2, executeit (start_addr=0x7ffff7feb000) at encodeit.c:258
+258		volatile int i,rc=0;
+1: x/i $pc
+=> 0x4021e8 <executeit+12>:	movl   $0x0,-0x8(%rbp)
+(gdb) x/40i mptr_threads[1]
+   0x7ffff7feb000:	enterq $0x800,$0x0
+   0x7ffff7feb004:	push   %rbx
+   0x7ffff7feb005:	push   %r12
+   0x7ffff7feb007:	push   %r13
+   0x7ffff7feb009:	push   %r14
+   0x7ffff7feb00b:	push   %r15
+   0x7ffff7feb00d:	movabs $0x7ffff7fac000,%rsi
+   0x7ffff7feb017:	xchg   %r10b,%cl
+   0x7ffff7feb01a:	mfence 
+   0x7ffff7feb01d:	xchg   %cx,%dx
+   0x7ffff7feb020:	xchg   %ebx,%eax
+   0x7ffff7feb022:	mov    %r10b,%bl
+   0x7ffff7feb025:	xadd   %ebx,%ecx
+   0x7ffff7feb028:	mov    0x38f(%rsi),%bl
+   0x7ffff7feb02f:	mov    0x59(%rsi),%r14d
+   0x7ffff7feb033:	mfence 
+   0x7ffff7feb036:	mov    %r9,0x27(%rsi)
+   0x7ffff7feb03a:	mov    %dil,%cl
+   0x7ffff7feb03d:	sfence 
+   0x7ffff7feb040:	xadd   %ebx,(%rsi)
+   0x7ffff7feb043:	mov    0x58e(%rsi),%r9b
+   0x7ffff7feb04a:	xadd   %r11b,%dl
+   0x7ffff7feb04e:	xchg   %ecx,%r9d
+   0x7ffff7feb051:	xchg   %edx,%r10d
+   0x7ffff7feb054:	mov    0x45(%rsi),%r9b
+   0x7ffff7feb058:	mov    %di,%dx
+   0x7ffff7feb05b:	xadd   %r10d,%r9d
+   0x7ffff7feb05f:	mov    %r10,%r15
+   0x7ffff7feb062:	mfence 
+   0x7ffff7feb065:	xchg   %r15b,%bl
+   0x7ffff7feb068:	lfence 
+   0x7ffff7feb06b:	xadd   %r10d,0x1c(%rsi)
+   0x7ffff7feb070:	pop    %r15
+   0x7ffff7feb072:	pop    %r14
+   0x7ffff7feb074:	pop    %r13
+   0x7ffff7feb076:	pop    %r12
+   0x7ffff7feb078:	pop    %rbx
+   0x7ffff7feb079:	leaveq 
+   0x7ffff7feb07a:	retq   
+   0x7ffff7feb07b:	add    %al,(%rax)
+(gdb) stepi
+260		i=0;
+1: x/i $pc
+=> 0x4021ef <executeit+19>:	movl   $0x0,-0x4(%rbp)
+(gdb) stepi
+262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021f6 <executeit+26>:	mov    -0x18(%rbp),%rdx
+(gdb) stepi
+0x00000000004021fa	262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021fa <executeit+30>:	mov    $0x0,%eax
+(gdb) stepi
+0x00000000004021ff	262		rc=(*start_addr)();
+1: x/i $pc
+=> 0x4021ff <executeit+35>:	callq  *%rdx
+(gdb) stepi
+0x00007ffff7feb000 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb000:	enterq $0x800,$0x0
+(gdb) stepi
+0x00007ffff7feb004 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb004:	push   %rbx
+(gdb) stepi
+0x00007ffff7feb005 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb005:	push   %r12
+(gdb) stepi
+0x00007ffff7feb007 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb007:	push   %r13
+(gdb) stepi
+0x00007ffff7feb009 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb009:	push   %r14
+(gdb) stepi
+0x00007ffff7feb00b in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb00b:	push   %r15
+(gdb) stepi
+0x00007ffff7feb00d in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb00d:	movabs $0x7ffff7fac000,%rsi
+(gdb) stepi
+0x00007ffff7feb017 in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb017:	xchg   %r10b,%cl
+(gdb) stepi
+0x00007ffff7feb01a in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb01a:	mfence 
+(gdb) stepi
+0x00007ffff7feb01d in ?? ()
+1: x/i $pc
+=> 0x7ffff7feb01d:	xchg   %cx,%dx
+(gdb) 

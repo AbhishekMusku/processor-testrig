@@ -1,26 +1,36 @@
 /*
+ * Description:
+ *
+ *
+ * References: Intel 64 and IA-32 Architecture Software Developers Manual (SDM)
+ *
  * GENERAL Instruction Format
  *
  * -----------------------------------------------------------------
  * | Instructoin    |   Opcode | ModR/M | Displacement | Immediate |
- * | Prefixess       |          |        |              |           |
+ * | Prefixes       |          |        |              |           |
  * -----------------------------------------------------------------
  *
  *  7  6  5   3  2   0
  * --------------------
- * | Mod | Reg** | R/M |
+ * | Mod | Reg* | R/M |
  * --------------------
  */ 
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/mman.h>
+
+#include <limits.h>    /* for PAGESIZE */
+
 /*
- * definition we need to support these functions.
+ * definitions we need to support these functions.
  *
  * see Table 2-2 in SDM for register/MODRM encode usage
  *
  *
  */
+
 #define PREFIX_16BIT   0x66
 #define PREFIX_32BIT	0x67		// Address size prefix (for 32-bit addressing in 64-bit mode)
 #define BASE_MODRM     0xc0
@@ -79,8 +89,22 @@
 
 // code generation defines
 
-#define MAX_INSTR_BYTES 10000
 #define MAX_DATA_BYTE  (10*1024)  // allocate 10K
+
+
+// code generation defines
+
+#define MAX_THREADS     4
+#define MAX_DEF_INSTRS  10
+#define MAX_INSTR_BYTES (3*PAGESIZE)   // allocate 3  PAGES for instruction
+#define MAX_DATA_BYTES  (10*PAGESIZE)  // allocate 10 PAGES for data
+#define MAX_COMM_BYTES  (PAGESIZE)     // allocate 1  PAGE for communications
+
+// information sharing between tasks
+#define NUM_PTRS 3
+#define CODE 0
+#define DATA 1
+#define COMM 2
 /*
  * Function: build_mov_register_to_register
  *
@@ -873,4 +897,33 @@ static inline volatile char *build_pop_reg(int reg_index, int x86_64f, volatile 
 	tgt_addr += BYTE1_OFF;
 			
         return(tgt_addr);
+}
+
+
+static inline volatile char *build_pusha(short pusha_size, volatile char *tgt_addr)
+{
+    // PUSHA/PUSHAD is NOT supported in 64-bit mode
+    if (pusha_size == 8) {
+        fprintf(stderr, "ERROR: PUSHA/PUSHAD is not supported in 64-bit mode\n");
+        return NULL;
+    }
+    
+    // Validate size parameter
+    if (pusha_size != 2 && pusha_size != 4) {
+        fprintf(stderr, "ERROR: Invalid size (%d) for PUSHA instruction. Use 2 (PUSHA) or 4 (PUSHAD)\n", pusha_size);
+        return NULL;
+    }
+    
+    // For 16-bit PUSHA, we need the 16-bit operand size prefix
+    if (pusha_size == 2) {
+        (*tgt_addr++) = PREFIX_16BIT;  // 0x66 prefix for 16-bit operand size
+        fprintf(stderr, "Generated PUSHA (16-bit) - pushes AX, CX, DX, BX, SP, BP, SI, DI\n");
+    } else {
+        fprintf(stderr, "Generated PUSHAD (32-bit) - pushes EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI\n");
+    }
+    
+    // PUSHA/PUSHAD opcode is 0x60 for both 16-bit and 32-bit modes
+    (*tgt_addr++) = 0x60;
+    
+    return tgt_addr;
 }

@@ -1,0 +1,236 @@
+T0: building instructions
+T0: MOVING MDPTR: MOV #7FFFF7FAC000->R6 (size=8)
+T0: Setup: loaded mdptr into RSI
+T0: Generating: MOV #3787->R1 (size=4)
+T0: Instruction 2 complete, next_ptr: 0x7ffff7fe801d
+T0: Generating: MOV [RSI+81]->R11 (size=1)
+T0: Instruction 3 complete, next_ptr: 0x7ffff7fe8021
+T0: Generating: XADD R10,R8 (size=4)
+T0: Instruction 4 complete, next_ptr: 0x7ffff7fe8025
+T0: Generating: XCHG R3,R1 (size=4)
+T0: Instruction 5 complete, next_ptr: 0x7ffff7fe8027
+T0: Generating: XADD R1,R8 (size=1)
+T0: Instruction 6 complete, next_ptr: 0x7ffff7fe802b
+T0: Generating: MOV #BD59->R2 (size=2)
+T0: Instruction 7 complete, next_ptr: 0x7ffff7fe8030
+T0: Generating: LOCK XCHG [RSI+0],R7 (size=4)
+T0: Instruction 8 complete, next_ptr: 0x7ffff7fe8033
+T0: Generating: XADD R7,R8 (size=4)
+T0: Instruction 9 complete, next_ptr: 0x7ffff7fe8037
+T0: Generating: LOCK XADD [RSI+0],R11 (size=4)
+T0: Instruction 10 complete, next_ptr: 0x7ffff7fe803c
+T0: Generating: MOV #D525->R9 (size=4)
+T0: Instruction 11 complete, next_ptr: 0x7ffff7fe8043
+T0: Generating: XADD R0,R3 (size=2)
+T0: Instruction 12 complete, next_ptr: 0x7ffff7fe8047
+T0: Generating: MOV [RSI+94]->R1 (size=4)
+T0: Instruction 13 complete, next_ptr: 0x7ffff7fe804a
+T0: Generating: MOV R10->R8 (size=1)
+T0: Instruction 14 complete, next_ptr: 0x7ffff7fe804d
+T0: Generating: MOV R0->R10 (size=4)
+T0: Instruction 15 complete, next_ptr: 0x7ffff7fe8050
+T0: Generating: XCHG R3,R10 (size=4)
+T0: Instruction 16 complete, next_ptr: 0x7ffff7fe8053
+T0: Generating: XCHG R9,R0 (size=4)
+T0: Instruction 17 complete, next_ptr: 0x7ffff7fe8056
+T0: Generating: LOCK XADD [RSI+0],R1 (size=4)
+T0: Instruction 18 complete, next_ptr: 0x7ffff7fe805a
+T0: Generating: LOCK XADD [RSI+121],R11 (size=4)
+T0: Instruction 19 complete, next_ptr: 0x7ffff7fe8060
+T0: Generating: XCHG [RSI+1311],R14 (size=1)
+T0: Instruction 20 complete, next_ptr: 0x7ffff7fe8067
+T0: Generating: MOV [RSI+123]->R7 (size=2)
+T0: Instruction 21 complete, next_ptr: 0x7ffff7fe806b
+T0: Generating: XCHG R0,R2 (size=1)
+T0: Instruction 22 complete, next_ptr: 0x7ffff7fe806d
+T0: Generating: MOV R11->R10 (size=4)
+T0: Instruction 23 complete, next_ptr: 0x7ffff7fe8070
+T0: Generating: XADD [RSI+0],R14 (size=1)
+T0: Instruction 24 complete, next_ptr: 0x7ffff7fe8074
+T0: Generating: LOCK XCHG [RSI+1397],R8 (size=4)
+T0: Instruction 25 complete, next_ptr: 0x7ffff7fe807c
+T0: Generating: MOV R15->R1 (size=4)
+T0: Instruction 26 complete, next_ptr: 0x7ffff7fe807f
+T0: Generating: XADD R7,R9 (size=4)
+T0: Instruction 27 complete, next_ptr: 0x7ffff7fe8083
+T0: Generating: LOCK XCHG [RSI+1794],R9 (size=1)
+T0: Instruction 28 complete, next_ptr: 0x7ffff7fe808b
+T0: next ptr is now 0x7ffff7fe808b
+T0: Generated 28 total instructions
+T1: building instructions
+T1: MOVING MDPTR: MOV #7FFFF7FB6000->R6 (size=8)
+T1: Setup: loaded mdptr into RSI
+T1: Generating: XCHG R15,R9 (size=4)
+T2: building instructions
+T3: building instructions
+T1: Instruction 2 complete, next_ptr: 0x7ffff7feb01a
+T1: Generating: MOV R7->R14 (size=4)
+T2: MOVING MDPTR: MOV #7FFFF7FC0000->R6 (size=8)
+T1: Instruction 3 complete, next_ptr: 0x7ffff7feb01d
+T2: Setup: loaded mdptr into RSI
+T1: Generating: XCHG [RSI+0],R9 (size=4)
+T3: MOVING MDPTR: MOV #7FFFF7FCA000->R6 (size=8)
+T1: Instruction 4 complete, next_ptr: 0x7ffff7feb020
+T3: Setup: loaded mdptr into RSI
+T1: Generating: XCHG [RSI+0],R7 (size=2)
+T1: Instruction 5 complete, next_ptr: 0x7ffff7feb023
+T1: Generating: MOV R8->R3 (size=8)
+T2: Generating: MOV R14->[RSI+0] (size=8)
+T1: Instruction 6 complete, next_ptr: 0x7ffff7feb026
+T1: Generating: XCHG R3,R1 (size=2)
+T2: Instruction 2 complete, next_ptr: 0x7ffff7fee01a
+T1: Instruction 7 complete, next_ptr: 0x7ffff7feb029
+T3: Generating: MOV #DB07->R14 (size=8)
+T2: Generating: XADD R8,R2 (size=1)
+T1: Generating: LOCK XCHG [RSI+7],R15 (size=4)
+T3: Instruction 2 complete, next_ptr: 0x7ffff7ff1021
+T2: Instruction 3 complete, next_ptr: 0x7ffff7fee01e
+T3: Generating: LOCK XCHG [RSI+0],R9 (size=1)
+T2: Generating: MOV #B519->R2 (size=4)
+T2: Instruction 4 complete, next_ptr: 0x7ffff7fee024
+T3: Instruction 3 complete, next_ptr: 0x7ffff7ff1025
+T1: Instruction 8 complete, next_ptr: 0x7ffff7feb02e
+T2: Generating: XCHG R0,R2 (size=4)
+T3: Generating: XADD [RSI+0],R0 (size=4)
+T1: Generating: XCHG [RSI+1350],R7 (size=4)
+T2: Instruction 5 complete, next_ptr: 0x7ffff7fee026
+T3: Instruction 4 complete, next_ptr: 0x7ffff7ff1028
+T2: Generating: MOV [RSI+0]->R2 (size=1)
+T1: Instruction 9 complete, next_ptr: 0x7ffff7feb034
+T3: Generating: MOV R1->[RSI+1205] (size=1)
+T1: Generating: XCHG R9,R2 (size=1)
+T2: Instruction 6 complete, next_ptr: 0x7ffff7fee029
+T2: Generating: XADD R14,R11 (size=1)
+T1: Instruction 10 complete, next_ptr: 0x7ffff7feb037
+T1: Generating: MOV R10->[RSI+0] (size=4)
+T3: Instruction 5 complete, next_ptr: 0x7ffff7ff102f
+T2: Instruction 7 complete, next_ptr: 0x7ffff7fee02d
+T3: Generating: XADD [RSI+0],R0 (size=1)
+T1: Instruction 11 complete, next_ptr: 0x7ffff7feb03a
+T2: Generating: MOV [RSI+1332]->R10 (size=8)
+T1: Generating: XADD R2,R9 (size=1)
+T3: Instruction 6 complete, next_ptr: 0x7ffff7ff1032
+T1: Instruction 12 complete, next_ptr: 0x7ffff7feb03e
+T3: Generating: MOV R10->R14 (size=4)
+T1: Generating: MOV [RSI+1830]->R1 (size=4)
+T2: Instruction 8 complete, next_ptr: 0x7ffff7fee034
+T3: Instruction 7 complete, next_ptr: 0x7ffff7ff1035
+T2: Generating: MOV #2F81->R11 (size=4)
+T2: Instruction 9 complete, next_ptr: 0x7ffff7fee03b
+T3: Generating: LOCK XADD [RSI+262],R9 (size=1)
+T1: Instruction 13 complete, next_ptr: 0x7ffff7feb044
+T2: Generating: MOV R10->[RSI+1380] (size=1)
+T1: Generating: MOV R3->[RSI+1070] (size=8)
+T3: Instruction 8 complete, next_ptr: 0x7ffff7ff103e
+T2: Instruction 10 complete, next_ptr: 0x7ffff7fee042
+T1: Instruction 14 complete, next_ptr: 0x7ffff7feb04b
+T3: Generating: XCHG [RSI+338],R11 (size=4)
+T2: Generating: XADD R2,R3 (size=4)
+T1: Generating: LOCK XADD [RSI+0],R3 (size=4)
+T2: Instruction 11 complete, next_ptr: 0x7ffff7fee045
+T3: Instruction 9 complete, next_ptr: 0x7ffff7ff1045
+T1: Instruction 15 complete, next_ptr: 0x7ffff7feb04f
+T2: Generating: XCHG [RSI+1925],R8 (size=1)
+T3: Generating: XCHG R2,R1 (size=1)
+T1: Generating: XCHG R11,R7 (size=1)
+T3: Instruction 10 complete, next_ptr: 0x7ffff7ff1047
+T2: Instruction 12 complete, next_ptr: 0x7ffff7fee04c
+T1: Instruction 16 complete, next_ptr: 0x7ffff7feb052
+T3: Generating: MOV [RSI+733]->R14 (size=4)
+T2: Generating: MOV R15->[RSI+0] (size=8)
+T1: Generating: MOV #D146->R3 (size=8)
+T1: Instruction 17 complete, next_ptr: 0x7ffff7feb05c
+T1: Generating: XADD R14,R8 (size=4)
+T3: Instruction 11 complete, next_ptr: 0x7ffff7ff104e
+T2: Instruction 13 complete, next_ptr: 0x7ffff7fee04f
+T1: Instruction 18 complete, next_ptr: 0x7ffff7feb060
+T2: Generating: XCHG R1,R8 (size=4)
+T3: Generating: MOV #22AD->R11 (size=1)
+T1: Generating: MOV R7->R10 (size=1)
+T3: Instruction 12 complete, next_ptr: 0x7ffff7ff1052
+T1: Instruction 19 complete, next_ptr: 0x7ffff7feb063
+T2: Instruction 14 complete, next_ptr: 0x7ffff7fee052
+T3: Generating: XADD [RSI+483],R14 (size=1)
+T1: Generating: XADD R9,R7 (size=1)
+T2: Generating: XADD R7,R0 (size=1)
+T1: Instruction 20 complete, next_ptr: 0x7ffff7feb067
+T2: Instruction 15 complete, next_ptr: 0x7ffff7fee055
+T3: Instruction 13 complete, next_ptr: 0x7ffff7ff105a
+T1: Generating: LOCK XCHG [RSI+698],R11 (size=4)
+T2: Generating: MOV R15->[RSI+38] (size=1)
+T3: Generating: MOV R8->[RSI+0] (size=8)
+T3: Instruction 14 complete, next_ptr: 0x7ffff7ff105d
+T3: Generating: MOV [RSI+0]->R15 (size=8)
+T3: Instruction 15 complete, next_ptr: 0x7ffff7ff1060
+T2: Instruction 16 complete, next_ptr: 0x7ffff7fee059
+T2: Generating: MOV R0->[RSI+108] (size=4)
+T1: Instruction 21 complete, next_ptr: 0x7ffff7feb06f
+T2: Instruction 17 complete, next_ptr: 0x7ffff7fee05c
+T1: Generating: XADD R1,R2 (size=4)
+T2: Generating: MOV #464->R15 (size=4)
+T2: Instruction 18 complete, next_ptr: 0x7ffff7fee063
+T1: Instruction 22 complete, next_ptr: 0x7ffff7feb072
+T2: Generating: XCHG R8,R14 (size=4)
+T1: Generating: MOV R7->[RSI+54] (size=8)
+T3: Generating: XADD [RSI+0],R2 (size=1)
+T2: Instruction 19 complete, next_ptr: 0x7ffff7fee066
+T2: Generating: XADD [RSI+896],R9 (size=4)
+T3: Instruction 16 complete, next_ptr: 0x7ffff7ff1063
+T1: Instruction 23 complete, next_ptr: 0x7ffff7feb076
+T2: Instruction 20 complete, next_ptr: 0x7ffff7fee06e
+T3: Generating: LOCK XADD [RSI+0],R8 (size=1)
+T2: Generating: XCHG R2,R11 (size=1)
+T1: Generating: MOV #5429->R0 (size=1)
+T1: Instruction 24 complete, next_ptr: 0x7ffff7feb079
+T3: Instruction 17 complete, next_ptr: 0x7ffff7ff1068
+T2: Instruction 21 complete, next_ptr: 0x7ffff7fee071
+T1: Generating: MOV [RSI+0]->R10 (size=8)
+T3: Generating: MOV R3->R1 (size=4)
+T2: Generating: MOV R7->[RSI+1671] (size=1)
+T3: Instruction 18 complete, next_ptr: 0x7ffff7ff106a
+T1: Instruction 25 complete, next_ptr: 0x7ffff7feb07c
+T3: Generating: MOV R0->[RSI+0] (size=1)
+T1: Generating: XADD R11,R2 (size=1)
+T2: Instruction 22 complete, next_ptr: 0x7ffff7fee078
+T2: Generating: XCHG R2,R0 (size=4)
+T3: Instruction 19 complete, next_ptr: 0x7ffff7ff106d
+T1: Instruction 26 complete, next_ptr: 0x7ffff7feb080
+T3: Generating: LOCK XADD [RSI+85],R7 (size=1)
+T2: Instruction 23 complete, next_ptr: 0x7ffff7fee07a
+T1: Generating: XCHG [RSI+17],R1 (size=1)
+T2: Generating: MOV R7->R8 (size=8)
+T2: Instruction 24 complete, next_ptr: 0x7ffff7fee07d
+T3: Instruction 20 complete, next_ptr: 0x7ffff7ff1072
+T2: Generating: XADD R3,R9 (size=4)
+T1: Instruction 27 complete, next_ptr: 0x7ffff7feb083
+T3: Generating: MOV R1->R7 (size=4)
+T1: Generating: XADD R2,R9 (size=1)
+T2: Instruction 25 complete, next_ptr: 0x7ffff7fee081
+T3: Instruction 21 complete, next_ptr: 0x7ffff7ff1074
+T2: Generating: XADD R2,R7 (size=2)
+T1: Instruction 28 complete, next_ptr: 0x7ffff7feb087
+T3: Generating: XCHG R8,R11 (size=1)
+T1: next ptr is now 0x7ffff7feb087
+T2: Instruction 26 complete, next_ptr: 0x7ffff7fee085
+T1: Generated 28 total instructions
+T2: Generating: MOV R14->R3 (size=4)
+T3: Instruction 22 complete, next_ptr: 0x7ffff7ff1077
+T2: Instruction 27 complete, next_ptr: 0x7ffff7fee088
+T3: Generating: LOCK XADD [RSI+1284],R7 (size=4)
+T2: Generating: XADD R7,R11 (size=1)
+T2: Instruction 28 complete, next_ptr: 0x7ffff7fee08c
+T3: Instruction 23 complete, next_ptr: 0x7ffff7ff107f
+T2: next ptr is now 0x7ffff7fee08c
+T3: Generating: LOCK XADD [RSI+15],R8 (size=4)
+T2: Generated 28 total instructions
+T3: Instruction 24 complete, next_ptr: 0x7ffff7ff1085
+T3: Generating: XADD R0,R10 (size=4)
+T3: Instruction 25 complete, next_ptr: 0x7ffff7ff1089
+T3: Generating: MOV [RSI+1749]->R15 (size=4)
+T3: Instruction 26 complete, next_ptr: 0x7ffff7ff1090
+T3: Generating: MOV [RSI+66]->R10 (size=4)
+T3: Instruction 27 complete, next_ptr: 0x7ffff7ff1094
+T3: Generating: MOV R15->R10 (size=8)
+T3: Instruction 28 complete, next_ptr: 0x7ffff7ff1097
+T3: next ptr is now 0x7ffff7ff1097
+T3: Generated 28 total instructions
